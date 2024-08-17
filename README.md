@@ -1,2 +1,3 @@
 # retry
-Retry an async function
+
+Retry an async function.
