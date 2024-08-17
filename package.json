@@ -5,12 +5,13 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky || true",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
-    "precommit": "pnpm format:check && pnpm lint",
-    "prepare": "husky"
+    "check": "pnpm format:check && pnpm lint"
   },
   "keywords": [],
   "license": "MIT",
@@ -23,7 +24,13 @@
     "*.{js,cjs,mjs,ts,md,json,yml,yaml}": "prettier --write ",
     "*.{js,cjs,mjs,ts}": "eslint --fix"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/patoi/retry.git"
+  },
   "devDependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@types/eslint": "^9.6.0",
     "eslint": "^9.9.0",
     "eslint-config-prettier": "^9.1.0",
