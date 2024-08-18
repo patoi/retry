@@ -34,7 +34,7 @@ Defaults:
 - sleepTime: 1000 ms
 - debug: `false`
 
-# Description
+## Description
 
 Retry request if response is an Error (Timeout, Network, etc. - except `AbortError`) or `Response.status` is 500 or greater.
 
