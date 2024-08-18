@@ -4,6 +4,10 @@
   "description": "Retry an async function",
   "main": "index.js",
   "type": "module",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky || true",
