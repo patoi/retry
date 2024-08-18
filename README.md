@@ -1,6 +1,6 @@
 # retry
 
-Retry fetch.
+Retry fetch with zero dependency.
 
 ## Usage
 
