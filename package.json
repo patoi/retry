@@ -7,7 +7,8 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky || true",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tsx --test ./test.ts",
+    "test:only": "tsx --test-only ./test.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
@@ -31,12 +32,17 @@
   "devDependencies": {
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@release-it/conventional-changelog": "^8.0.1",
     "@types/eslint": "^9.6.0",
+    "@types/node": "^22.4.0",
     "eslint": "^9.9.0",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.9",
+    "msw": "^2.3.5",
     "prettier": "^3.3.3",
+    "release-it": "^17.6.0",
+    "tsx": "^4.17.0",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.1.0"
   }
