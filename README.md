@@ -4,7 +4,7 @@ Retry fetch.
 
 ## Usage
 
-```javacript
+```js
 const Retry = retry()
 const response = await Retry(async () => fetch('https://localhost:8080/api/200'))
 ```
@@ -23,8 +23,8 @@ yarn add -D @patoi/retry
 type Config = { retries?: number; sleepTime?: number; debug?: boolean }
 ```
 
-```javacript
-const Retry = retry({ retries: 2, sleepTime: 500, debug: true})
+```js
+const Retry = retry({ retries: 2, sleepTime: 500, debug: true })
 const response = await Retry(async () => fetch('https://localhost:8080/api/200'))
 ```
 
