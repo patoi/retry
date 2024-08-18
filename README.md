@@ -41,3 +41,12 @@ Retry request if response is an Error (Timeout, Network, etc. - except `AbortErr
 Handles `AbortError`: if request aborted, no more retries, throws `AbortError` immediately.
 
 See tests for more: [examples](test.ts)
+
+Sleep time **increases the delay** between request: when a request is completed, the delayed start beginning, for example (sleepTime is 1s):
+
+- First request starts at 0s (immediately), delay is 0s
+- Second at 1s (delay is 1s)
+- Third at 3s (delay is 2s)
+- Fourth at 6s (delay is 3s)
+- Fifth at 10s (delay is 4s)
+  and so on..
