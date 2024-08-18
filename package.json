@@ -12,7 +12,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
-    "check": "pnpm format:check && pnpm lint"
+    "check": "pnpm format:check && pnpm lint",
+    "release": "pnpm format:check && pnpm lint && pnpm test && pnpm release-it"
   },
   "keywords": [],
   "license": "MIT",
