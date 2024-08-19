@@ -38,6 +38,8 @@ Defaults:
 
 Retry request if response is an Error (Timeout, Network, etc. - except `AbortError`) or `Response.status` is 500 or greater.
 
+DO NOT USE retry() with Promise.{all, allSettled, any, ...}, because it causes sequential requests.
+
 Handles `AbortError`: if request aborted, no more retries, throws `AbortError` immediately.
 
 See tests for more: [examples](test.ts)

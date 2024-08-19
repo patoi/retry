@@ -104,7 +104,7 @@ describe('retry test', () => {
   })
 
   /**
-   * Aborting request means, we do not try again.
+   * Aborting request means we do not try again.
    */
   it('aborted request', async () => {
     const controller = new AbortController()
@@ -127,14 +127,32 @@ describe('retry test', () => {
     )
   })
 
+  /**
+   * DO NOT USE retry() with Promise.{all, allSettled, any, ...}, because it causes sequential requests.
+   */
+
+  /**
+   * This function demonstrates the sequential requests, turn on debug: true,
+   * Output: fn1, and after fn2, etc.
+   * @example
+    fn1 - 1. status: 401
+    fn1 - 1. success fetch: 401
+    fn1 - 1. done
+    fn2 - 1. status: 404
+    fn2 - 1. success fetch: 404
+    fn2 - 1. done
+   */
   it('success on Promise.all request, no retrying', async () => {
     const Retry = retry({ debug: false })
+    async function fn1() {
+      return fetch('https://localhost:8080/api/401')
+    }
+    async function fn2() {
+      return fetch('https://localhost:8080/api/404')
+    }
     try {
-      const response = await Promise.all([
-        Retry(async () => fetch('https://localhost:8080/api/404')),
-        Retry(async () => fetch('https://localhost:8080/api/404'))
-      ])
-      assert.strictEqual(response[0]?.status, 404)
+      const response = await Promise.all([Retry(fn1), Retry(fn2)])
+      assert.strictEqual(response[0]?.status, 401)
       assert.strictEqual(response[1]?.status, 404)
       assert.strictEqual((response[0] as RetryResponeType)!.count, 1)
       assert.strictEqual((response[1] as RetryResponeType)!.count, 1)
